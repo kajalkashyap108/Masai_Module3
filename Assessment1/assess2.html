@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React.createElement Example</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        // Parent container with the specified style
+        const container = React.createElement(
+            'div',
+            {
+                id: 'container',
+                style: { backgroundColor: 'lightblue', padding: '20px' }
+            },
+            // Child elements inside the container
+            React.createElement(
+                'h1',
+                {
+                    style: { color: 'Darkblue', textAlign: 'center' }
+                },
+                'Welcome to React.createElement'
+            ),
+            React.createElement(
+                'ul',
+                null,
+                React.createElement('li', { style: { margin: '10px', fontSize: '18px' } }, 'Learn React'),
+                React.createElement('li', { style: { margin: '10px', fontSize: '18px' } }, 'Understand React.createElement'),
+                React.createElement('li', { style: { margin: '10px', fontSize: '18px' } }, 'Build Amazing Apps')
+            ),
+            React.createElement(
+                'p',
+                {
+                    style: { fontStyle: 'italic', color: 'gray' }
+                },
+                'This page is built using React.createElement'
+            )
+        );
+
+        // Rendering the container to the root div
+        ReactDOM.render(container, document.getElementById('root'));
+    </script>
+</body>
+</html>
