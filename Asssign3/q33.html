@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Children Prop</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .container-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .button {
+      background-color: #6c63ff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .button:hover {
+      background-color: #554dff;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // Container Component
+    const Container = ({ title, children }) => {
+      return (
+        <div className="container">
+          {title && <div className="container-title">{title}</div>}
+          {children}
+        </div>
+      );
+    };
+
+    // App Component
+    const App = () => {
+      return (
+        <div>
+          {/* Container with a heading */}
+          <Container title="Heading Example">
+            <h1>This is a Heading</h1>
+          </Container>
+
+          {/* Container with a paragraph */}
+          <Container title="Paragraph Example">
+            <p>
+              This is a paragraph explaining how the children prop allows you to
+              pass dynamic content to a parent component in React.
+            </p>
+          </Container>
+
+          {/* Container with a button */}
+          <Container title="Button Example">
+            <button className="button">Click Me</button>
+          </Container>
+        </div>
+      );
+    };
+
+    // Render the App Component
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Message</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .message {
+      margin: 20px 0;
+      font-size: 18px;
+      color: #333;
+    }
+    .toggle-button {
+      background-color: #6c63ff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .toggle-button:hover {
+      background-color: #554dff;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const ToggleMessage = () => {
+      // State to manage visibility of the message
+      const [isVisible, setIsVisible] = React.useState(false);
+
+      // Handler to toggle the state
+      const handleToggle = () => {
+        setIsVisible(!isVisible);
+      };
+
+      return (
+        <div className="container">
+          <button className="toggle-button" onClick={handleToggle}>
+            {isVisible ? "Hide" : "Show"}
+          </button>
+          {isVisible && (
+            <div className="message">
+              Hello, welcome to React state management!
+            </div>
+          )}
+        </div>
+      );
+    };
+
+    // Render the component
+    ReactDOM.render(<ToggleMessage />, document.getElementById("root"));
+  </script>
+</body>
+</html>
