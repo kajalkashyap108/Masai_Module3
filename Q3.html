@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing Plans</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f9fa;
+      text-align: center;
+    }
+    .header {
+      margin-bottom: 30px;
+    }
+    .header h1 {
+      font-size: 24px;
+      color: #333;
+    }
+    .header p {
+      color: #555;
+      font-size: 14px;
+    }
+    .pricing-plans {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .plan-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 300px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+    .plan-card h2 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 15px 0;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .feature-item img {
+      margin-right: 10px;
+      width: 16px;
+      height: 16px;
+    }
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .get-started {
+      background-color: #6c63ff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .get-started:hover {
+      background-color: #554dff;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const FeatureItem = ({ text }) => (
+      <li className="feature-item">
+        <img src="https://img.icons8.com/ios-filled/50/00e676/checkmark.png" alt="check" />
+        {text}
+      </li>
+    );
+
+    const PlanCard = ({ title, features, price }) => (
+      <div className="plan-card">
+        <h2>{title}</h2>
+        <ul className="features">
+          {features.map((feature, index) => (
+            <FeatureItem key={index} text={feature} />
+          ))}
+        </ul>
+        <div className="price">{price}</div>
+        <button className="get-started">Get Started</button>
+      </div>
+    );
+
+    const Header = () => (
+      <div className="header">
+        <h1>
+          The Right Plan for <span style={{ color: "#6c63ff" }}>Your Business</span>
+        </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis magnam, sed officiis commodo labore odit.</p>
+      </div>
+    );
+
+    const PricingPlans = () => {
+      const plans = [
+        {
+          title: "Starter",
+          features: ["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"],
+          price: "Free",
+        },
+        {
+          title: "Lorem Plus",
+          features: ["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"],
+          price: "$32.00",
+        },
+        {
+          title: "Lorem Pro",
+          features: ["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"],
+          price: "$50.00",
+        },
+      ];
+
+      return (
+        <div className="pricing-plans">
+          {plans.map((plan, index) => (
+            <PlanCard
+              key={index}
+              title={plan.title}
+              features={plan.features}
+              price={plan.price}
+            />
+          ))}
+        </div>
+      );
+    };
+
+    const App = () => (
+      <div>
+        <Header />
+        <PricingPlans />
+      </div>
+    );
+
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>

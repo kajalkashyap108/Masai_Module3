@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Card</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .welcome-card {
+      width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+    .header, .footer {
+      background-color: #6200ea;
+      color: white;
+      padding: 10px 0;
+    }
+    .header {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .body {
+      padding: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+    .footer {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const Header = () => {
+      return <div className="header">Welcome to React</div>;
+    };
+
+    const Body = () => {
+      return <div className="body">React makes building UIs fun and easy!</div>;
+    };
+
+    const Footer = () => {
+      return <div className="footer">Happy Coding!</div>;
+    };
+
+    const WelcomeCard = () => {
+      return (
+        <div className="welcome-card">
+          <Header />
+          <Body />
+          <Footer />
+        </div>
+      );
+    };
+
+    ReactDOM.render(<WelcomeCard />, document.getElementById("root"));
+  </script>
+</body>
+</html>

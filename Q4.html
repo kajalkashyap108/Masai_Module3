@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Blog Page</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f8f9fa;
+    }
+    .blog-container {
+      max-width: 600px;
+      margin: auto;
+    }
+    .blog-post {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #fff;
+    }
+    .blog-post.featured {
+      background-color: #fffacd;
+    }
+    .blog-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .blog-content {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const blogs = [
+      {
+        title: "React Basics",
+        content: "Learn the basics of React.",
+        isFeatured: true,
+      },
+      {
+        title: "Advanced React",
+        content: "Delve deeper into React.",
+        isFeatured: false,
+      },
+      {
+        title: "React Performance Tips",
+        content: "Optimize your React apps.",
+        isFeatured: true,
+      },
+    ];
+
+    const BlogPost = ({ title, content, isFeatured }) => {
+      const postClass = isFeatured ? "blog-post featured" : "blog-post";
+      return (
+        <div className={postClass}>
+          <div className="blog-title">{title}</div>
+          <div className="blog-content">{content}</div>
+        </div>
+      );
+    };
+
+    const BlogPage = () => {
+      return (
+        <div className="blog-container">
+          {blogs.map((blog, index) => (
+            <BlogPost
+              key={index}
+              title={blog.title}
+              content={blog.content}
+              isFeatured={blog.isFeatured}
+            />
+          ))}
+        </div>
+      );
+    };
+
+    ReactDOM.render(<BlogPage />, document.getElementById("root"));
+  </script>
+</body>
+</html>

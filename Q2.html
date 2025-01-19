@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reusable Card Component</title>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 300px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .card-header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .card-body {
+      padding: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // Reusable Card Component
+    const Card = ({ title, children }) => {
+      return (
+        <div className="card">
+          <div className="card-header">{title}</div>
+          <div className="card-body">{children}</div>
+        </div>
+      );
+    };
+
+    // Parent Component
+    const App = () => {
+      return (
+        <div>
+          <Card title="Card 1">
+            <p>This is the content of Card 1. It uses the children prop to display dynamic content.</p>
+          </Card>
+          <Card title="Card 2">
+            <ul>
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <li>Item 3</li>
+            </ul>
+          </Card>
+          <Card title="Card 3">
+            <p>
+              This is another card example with <strong>custom content</strong> using the
+              children prop.
+            </p>
+          </Card>
+        </div>
+      );
+    };
+
+    // Render the Parent Component
+    ReactDOM.render(<App />, document.getElementById("root"));
+  </script>
+</body>
+</html>
